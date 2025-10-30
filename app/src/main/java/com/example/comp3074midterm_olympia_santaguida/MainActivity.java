@@ -1,6 +1,7 @@
 package com.example.comp3074midterm_olympia_santaguida;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText numberInput;
     private Button generateTableBtn;
+    private Button historyBtn;
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> multiplicationList;
@@ -43,17 +45,27 @@ public class MainActivity extends AppCompatActivity {
         numberInput = findViewById(R.id.numberInput);
         generateTableBtn = findViewById(R.id.generateBtn);
         listView = findViewById(R.id.listView);
+        historyBtn = findViewById(R.id.historyBtn);
 
         // initializing list and adapter
         multiplicationList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, multiplicationList);
         listView.setAdapter(adapter);
 
-        // button click listener
+        // button click listener for generating table
         generateTableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 generateTableBtn();
+            }
+        });
+
+        // button click listener for showing history
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
             }
         });
 
