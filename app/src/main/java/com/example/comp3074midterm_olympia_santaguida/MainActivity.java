@@ -1,5 +1,6 @@
 package com.example.comp3074midterm_olympia_santaguida;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -95,6 +97,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    
+    private void showDeleteDialog(final int position){
+        final String item = multiplicationList.get(position);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Item");
+        builder.setMessage("Do you want to delete this row?\n" + item);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                multiplicationList.remove(position);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(MainActivity.this, "Deleted: " + item, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+    }
 }
