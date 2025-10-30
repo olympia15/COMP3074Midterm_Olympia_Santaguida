@@ -26,12 +26,6 @@ public class HistoryActivity extends AppCompatActivity {
             return insets;
         });
 
-        // enabling back button
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("History");
-        }
-
         // initializing view
         historyListView = findViewById(R.id.historyListView);
 
