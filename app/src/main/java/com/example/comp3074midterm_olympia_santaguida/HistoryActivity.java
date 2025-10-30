@@ -42,10 +42,4 @@ public class HistoryActivity extends AppCompatActivity {
 
         historyListView.setAdapter(historyAdapter);
     }
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
-    }
 }

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         generateTableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generateTableBtn();
+                generateTable();
             }
         });
 
